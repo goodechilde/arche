@@ -14,7 +14,7 @@ class RequestMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'cray:request';
+    protected $name = 'arche:request';
 
     /**
      * The console command description.
@@ -38,10 +38,10 @@ class RequestMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         if (!$this->option('type') || $this->option('type') == 'store') {
-            return config('cray.stubs_dir') . '/request.stub';
+            return config('arch.stubs_dir') . '/request.stub';
         }
 
-        return config('cray.stubs_dir') . '/request.update.stub';
+        return config('arch.stubs_dir') . '/request.update.stub';
     }
 
     protected function buildClass($name)

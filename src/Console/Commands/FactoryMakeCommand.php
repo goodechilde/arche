@@ -12,7 +12,7 @@ class FactoryMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'cray:factory';
+    protected $name = 'arche:factory';
 
     /**
      * The console command description.
@@ -35,7 +35,7 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return config('cray.stubs_dir').'/factory.stub';
+        return config('arch.stubs_dir').'/factory.stub';
     }
 
     /**

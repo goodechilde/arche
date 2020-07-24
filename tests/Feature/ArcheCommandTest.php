@@ -19,7 +19,7 @@ class ArcheCommandTest extends TestCase
     {
         $this->deleteStubs();
         $this->assertDirectoryDoesNotExist(resource_path('stubs'));
-        $this->artisan('vendor:publish --tag=cray');
+        $this->artisan('vendor:publish --tag=arche');
         $this->assertDirectoryExists(resource_path('stubs'));
     }
 
@@ -33,7 +33,7 @@ class ArcheCommandTest extends TestCase
         $this->assertFileDoesNotExist(base_path('database/factories/PostFactory.php'));
         $this->assertFileDoesNotExist(resource_path('views/posts'));
 
-        $this->artisan('cray Post');
+        $this->artisan('arche Post');
 
         $this->assertFileExists(app_path('Post.php'));
         $this->assertFileExists(app_path('Http/Controllers/PostController.php'));
@@ -75,7 +75,7 @@ Request created successfully in /app/Http/Requests/PostUpdateRequest.php" . PHP_
         $this->assertFileDoesNotExist(base_path('database/factories/PostFactory.php'));
         $this->assertDirectoryDoesNotExist(resource_path('views/posts'));
 
-        $this->artisan('cray Models/Post');
+        $this->artisan('arche Models/Post');
 
         $this->assertFileExists(app_path('Models/Post.php'));
         $this->assertFileExists(app_path('Http/Controllers/PostController.php'));
@@ -117,7 +117,7 @@ Request created successfully in /app/Http/Requests/PostUpdateRequest.php" . PHP_
         $this->assertFileDoesNotExist(base_path('database/factories/PostFactory.php'));
         $this->assertDirectoryDoesNotExist(resource_path('views/dashboard/posts'));
 
-        $this->artisan('cray Models/Post --controller-dir=dashboard --views-dir=dashboard');
+        $this->artisan('arche Models/Post --controller-dir=dashboard --views-dir=dashboard');
 
         $this->assertFileExists(app_path('Models/Post.php'));
         $this->assertFileExists(app_path('Http/Controllers/Dashboard/PostController.php'));
@@ -151,7 +151,7 @@ Request created successfully in /app/Http/Requests/PostUpdateRequest.php" . PHP_
 
     public function test_it_generates_view_paths_correctly_when_subdirectory_is_specified_for_the_controller()
     {
-        $this->artisan('cray Models/Post --controller-dir=dashboard --views-dir=dashboard/system');
+        $this->artisan('arche Models/Post --controller-dir=dashboard --views-dir=dashboard/system');
         $createBladeView = file_get_contents(resource_path('views/dashboard/system/posts/create.blade.php'));
         $postController = file_get_contents(app_path('Http/Controllers/Dashboard/PostController.php'));
 

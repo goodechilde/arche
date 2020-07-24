@@ -16,6 +16,6 @@ class ArcheFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'cray';
+        return 'arche';
     }
 }

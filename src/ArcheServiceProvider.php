@@ -34,29 +34,29 @@ class ArcheServiceProvider extends ServiceProvider
         /*
          * Optional methods to load your package assets
          */
-        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'cray');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'cray');
+        // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'arche');
+        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'arche');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         // $this->loadRoutesFrom(__DIR__.'/routes.php');
 
 //        if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('arche.php'),
-            ], 'cray');
+            ], 'arche');
 
             // Publishing the views.
             /*$this->publishes([
-                __DIR__.'/../resources/views' => resource_path('views/vendor/cray'),
+                __DIR__.'/../resources/views' => resource_path('views/vendor/arche'),
             ], 'views');*/
 
             // Publishing assets.
             $this->publishes([
                 __DIR__ . '/../resources/stubs' => resource_path('stubs')
-            ], 'cray');
+            ], 'arche');
 
             // Publishing the translation files.
             /*$this->publishes([
-                __DIR__.'/../resources/lang' => resource_path('lang/vendor/cray'),
+                __DIR__.'/../resources/lang' => resource_path('lang/vendor/arche'),
             ], 'lang');*/
 
         $this->app->when(MigrationCreator::class)

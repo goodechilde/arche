@@ -14,7 +14,7 @@ class ModelMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'cray:model';
+    protected $name = 'arche:model';
 
     /**
      * The console command description.
@@ -69,7 +69,7 @@ class ModelMakeCommand extends GeneratorCommand
     {
         $factory = Str::studly(class_basename($this->argument('name')));
 
-        $this->call('cray:factory', [
+        $this->call('arche:factory', [
             'name' => "{$factory}Factory",
             '--model' => $this->argument('name'),
         ]);
@@ -84,7 +84,7 @@ class ModelMakeCommand extends GeneratorCommand
     {
         $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
 
-        $this->call('cray:migration', [
+        $this->call('arche:migration', [
             'name' => "create_{$table}_table",
             '--create' => $table,
         ]);
@@ -101,7 +101,7 @@ class ModelMakeCommand extends GeneratorCommand
 
         $modelName = $this->qualifyClass($this->getNameInput());
 
-        $this->call('cray:controller', [
+        $this->call('arche:controller', [
             'name' => "{$controller}Controller",
             '--model' => $this->option('resource') ? $modelName : null,
         ]);
@@ -115,10 +115,10 @@ class ModelMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('pivot')) {
-            return config('cray.stubs_dir').'/pivot.model.stub';
+            return config('arch.stubs_dir').'/pivot.model.stub';
         }
 
-        return config('cray.stubs_dir').'/model.stub';
+        return config('arch.stubs_dir').'/model.stub';
     }
 
     /**

@@ -2,14 +2,14 @@
 
 namespace Goodechilde\Arche\Tests;
 
-use Goodechilde\Arche\CrayServiceProvider;
+use Goodechilde\Arche\ArcheServiceProvider;
 
 class ExampleTest extends TestCase
 {
 
     protected function getPackageProviders($app)
     {
-        return [CrayServiceProvider::class];
+        return [ArcheServiceProvider::class];
     }
 
     /** @test */

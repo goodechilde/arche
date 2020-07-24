@@ -4,7 +4,7 @@
 namespace Goodechilde\Arche\Tests;
 
 use Illuminate\Support\Facades\Artisan;
-use Goodechilde\Arche\CrayServiceProvider;
+use Goodechilde\Arche\ArcheServiceProvider;
 use Orchestra\Testbench\TestCase as Testbench;
 
 class TestCase extends Testbench
@@ -82,20 +82,20 @@ class TestCase extends Testbench
 
     protected function getPackageProviders($app)
     {
-        return [CrayServiceProvider::class];
+        return [ArcheServiceProvider::class];
     }
 
     protected function getEnvironmentSetUp($app)
     {
         parent::getEnvironmentSetUp($app);
 
-        Artisan::call("vendor:publish", ["--tag" => "cray"]);
+        Artisan::call("vendor:publish", ["--tag" => "arche"]);
 
     }
 
     protected function resolveApplicationConsoleKernel($app)
     {
-        $app->singleton('Illuminate\Contracts\Console\Kernel', 'JunaidQadirB\Cray\Console\Kernel');
+        $app->singleton('Illuminate\Contracts\Console\Kernel', 'JunaidQadirB\Arche\Console\Kernel');
     }
 
     function rmdirRecursive($dir)
