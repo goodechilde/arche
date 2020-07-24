@@ -2,6 +2,7 @@
 
 namespace Goodechilde\Arche\Console;
 
+use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Goodechilde\Arche\Console\Commands\ControllerMakeCommand;
@@ -10,7 +11,6 @@ use Goodechilde\Arche\Console\Commands\Arche;
 use Goodechilde\Arche\Console\Commands\MigrateMakeCommand;
 use Goodechilde\Arche\Console\Commands\ModelMakeCommand;
 use Goodechilde\Arche\Console\Commands\RequestMakeCommand;
-use Goodechilde\Arche\Console\Commands\ViewMakeCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
         MigrateMakeCommand::class,
         ModelMakeCommand::class,
         RequestMakeCommand::class,
-        ViewMakeCommand::class,
+        SeederMakeCommand::class,
     ];
 
     /**
