@@ -38,10 +38,10 @@ class RequestMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         if (!$this->option('type') || $this->option('type') == 'store') {
-            return config('arch.stubs_dir') . '/request.stub';
+            return config('arche.stubs_dir') . '/request.stub';
         }
 
-        return config('arch.stubs_dir') . '/request.update.stub';
+        return config('arche.stubs_dir') . '/request.update.stub';
     }
 
     protected function buildClass($name)

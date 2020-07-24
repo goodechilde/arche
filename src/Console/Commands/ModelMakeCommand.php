@@ -115,10 +115,10 @@ class ModelMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('pivot')) {
-            return config('arch.stubs_dir').'/pivot.model.stub';
+            return config('arche.stubs_dir').'/pivot.model.stub';
         }
 
-        return config('arch.stubs_dir').'/model.stub';
+        return config('arche.stubs_dir').'/model.stub';
     }
 
     /**

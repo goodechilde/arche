@@ -35,7 +35,7 @@ class FactoryMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return config('arch.stubs_dir').'/factory.stub';
+        return config('arche.stubs_dir').'/factory.stub';
     }
 
     /**
