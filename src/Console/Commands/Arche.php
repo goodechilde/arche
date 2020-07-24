@@ -59,13 +59,14 @@ class Arche extends GeneratorCommand
          * - Generate Migration
          * - Generate Controller
          * - Generate Requests
-         * - Generate Views
+         * - Generate Seeder
          *
          */
         $this->type = 'Model';
 
         if (!$this->option('no-factory')) {
             $this->createFactory();
+            $this->createSeeder();
         }
 
         if (!$this->option('no-migration')) {
@@ -94,6 +95,20 @@ class Arche extends GeneratorCommand
         $this->call('arche:factory', [
             'name' => "{$factory}Factory",
             '--model' => $this->argument('name'),
+        ]);
+    }
+
+    /**
+     * Create a database seeder for the model.
+     *
+     * @return void
+     */
+    protected function createSeeder()
+    {
+        $seeder = Str::studly(class_basename($this->argument('name')));
+
+        $this->call('arche:seeder', [
+            'name' => "{$seeder}Seeder",
         ]);
     }
 
