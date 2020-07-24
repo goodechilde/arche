@@ -109,6 +109,7 @@ class Arche extends GeneratorCommand
 
         $this->call('arche:seeder', [
             'name' => "{$seeder}Seeder",
+            '--model' => $this->argument('name'),
         ]);
     }
 
