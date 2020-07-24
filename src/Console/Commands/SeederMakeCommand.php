@@ -5,7 +5,7 @@ namespace Goodechilde\Arche\Console\Commands;
 use Goodechilde\Arche\Console\Contracts\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-class FactoryMakeCommand extends GeneratorCommand
+class SeederMakeCommand extends GeneratorCommand
 {
     /**
      * The console command name.
