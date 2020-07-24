@@ -52,7 +52,7 @@ class SeederMakeCommand extends GeneratorCommand
             : 'Model';
 
         return str_replace(
-            'DummyModel', $model, parent::buildClass($name)
+            'DummyModel', $name, parent::buildClass($name)
         );
     }
 
