@@ -1,0 +1,65 @@
+{
+    "name": "goodechilde/arche",
+    "description": "A Laravel package to help you generate APIScaffolding!",
+    "keywords": [
+        "goodechilde",
+        "apiscaffold",
+        "scaffold",
+        "generate",
+        "generate code",
+        "code generator"
+    ],
+    "homepage": "https://github.com/goodechilde/apiscaffold",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Goodechilde Productions",
+            "email": "devs@eq8.in",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^6.0|^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0|^5.0",
+        "phpunit/phpunit": "^8.0|^9.0"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Goodechilde\\Arche\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Goodechilde\\Arche\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Goodechilde\\Arche\\ArcheServiceProvider"
+            ],
+            "aliases": {
+                "Arche": "Goodechilde\\Arche\\ArcheFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
