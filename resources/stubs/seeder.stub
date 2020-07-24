@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class {{ class }}Seeder extends Seeder
+class DummyModelSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +12,5 @@ class {{ class }}Seeder extends Seeder
     public function run()
     {
         factory(App\DummyModel::class, 25)->create();
-    }
     }
 }
