@@ -2,6 +2,7 @@
 
 namespace Goodechilde\Arche\Console;
 
+use Goodechilde\Arche\Console\Commands\ResourceMakeCommand;
 use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
         RequestMakeCommand::class,
         SeederMakeCommand::class,
         PolicyMakeCommand::class,
+        ResourceMakeCommand::class,
     ];
 
     /**

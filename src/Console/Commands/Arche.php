@@ -74,6 +74,7 @@ class Arche extends GeneratorCommand
             $this->createMigration();
         }
         $this->createController();
+        $this->createResource();
 
         $this->type = 'Request';
 
@@ -162,6 +163,20 @@ class Arche extends GeneratorCommand
         $this->call('arche:controller', $args);
     }
 
+
+    /**
+     * Create a resource for the model.
+     *
+     * @return void
+     */
+    protected function createResource()
+    {
+        $model = Str::studly(class_basename($this->argument('name')));
+        $name = "{$model}Resource";
+        $this->call('arche:resource', [
+            'name' => $name,
+        ]);
+    }
 
     /**
      * Create a controller for the model.
