@@ -176,6 +176,24 @@ class Arche extends GeneratorCommand
             '--type' => Str::slug($requestType),
         ]);
     }
+    
+
+    /**
+     * Create a policy for the model.
+     *
+     * @param string $requestType
+     *
+     * @return void
+     */
+    protected function createPolicy()
+    {
+        $model = Str::studly(class_basename($this->argument('name')));
+        $name = "{$model}Policy";
+        $this->call('arche:policy', [
+            'name' => $name,
+            '--model' => $model,
+        ]);
+    }
 
     /**
      * Get the stub file for the generator.
