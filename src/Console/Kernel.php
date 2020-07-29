@@ -11,6 +11,7 @@ use Goodechilde\Arche\Console\Commands\Arche;
 use Goodechilde\Arche\Console\Commands\MigrateMakeCommand;
 use Goodechilde\Arche\Console\Commands\ModelMakeCommand;
 use Goodechilde\Arche\Console\Commands\RequestMakeCommand;
+use Goodechilde\Arche\Console\Commands\PolicyMakeCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
         ModelMakeCommand::class,
         RequestMakeCommand::class,
         SeederMakeCommand::class,
+        PolicyMakeCommand::class,
     ];
 
     /**
