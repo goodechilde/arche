@@ -13,7 +13,7 @@ class PolicyMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'mbt:policy';
+    protected $name = 'arche:policy';
 
     /**
      * The console command description.
