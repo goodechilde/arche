@@ -27,6 +27,7 @@ class Arche extends GeneratorCommand
     {--no-views : Do not create view files for the model}
     {--no-migration : Do not create a migration for the model}
     {--no-factory : Do not create a factory for the model}
+    {--no-policy : Do not create a policy for the model}
     ';
 
     /**
@@ -79,6 +80,9 @@ class Arche extends GeneratorCommand
         $this->createRequest('Store');
 
         $this->createRequest('Update');
+        if (!$this->option('no-policy')) {
+            $this->createPolicy();
+        }
 
 
     }
@@ -176,12 +180,10 @@ class Arche extends GeneratorCommand
             '--type' => Str::slug($requestType),
         ]);
     }
-    
+
 
     /**
      * Create a policy for the model.
-     *
-     * @param string $requestType
      *
      * @return void
      */
