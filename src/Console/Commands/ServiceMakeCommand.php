@@ -88,7 +88,7 @@ class ServiceMakeCommand extends GeneratorCommand
     protected function getOptions()
     {
         return [
-//            ['model', 'm', InputOption::VALUE_REQUIRED, 'The given model.'],
+            ['model', 'm', InputOption::VALUE_REQUIRED, 'The given model.'],
 //            ['type', 't', InputOption::VALUE_OPTIONAL, 'Type of request. Values can be store or update'],
         ];
     }

@@ -75,7 +75,7 @@ class Arche extends GeneratorCommand
         }
         $this->createController();
         $this->createResource();
-        $this->createService();
+//        $this->createService();
 
         $this->type = 'Request';
 
