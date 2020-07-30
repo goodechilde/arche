@@ -4,6 +4,7 @@ namespace Goodechilde\Arche;
 
 use Goodechilde\Arche\Console\Commands\ResourceMakeCommand;
 use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
+use Goodechilde\Arche\Console\Commands\ServiceMakeCommand;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Support\ServiceProvider;
 use Goodechilde\Arche\Console\Commands\ControllerMakeCommand;
@@ -27,6 +28,7 @@ class ArcheServiceProvider extends ServiceProvider
         SeederMakeCommand::class,
         PolicyMakeCommand::class,
         ResourceMakeCommand::class,
+        ServiceMakeCommand::class,
     ];
 
     /**

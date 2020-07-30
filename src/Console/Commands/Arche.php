@@ -75,6 +75,7 @@ class Arche extends GeneratorCommand
         }
         $this->createController();
         $this->createResource();
+        $this->createService();
 
         $this->type = 'Request';
 
@@ -114,6 +115,21 @@ class Arche extends GeneratorCommand
 
         $this->call('arche:seeder', [
             'name' => "{$seeder}Seeder",
+            '--model' => $this->argument('name'),
+        ]);
+    }
+
+    /**
+     * Create a set of services for the model.
+     *
+     * @return void
+     */
+    protected function createService()
+    {
+        $service = Str::studly(class_basename($this->argument('name')));
+
+        $this->call('arche:service', [
+            'name' => "{$service}Service",
             '--model' => $this->argument('name'),
         ]);
     }

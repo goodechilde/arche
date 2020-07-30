@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\DummyModel;
+use App\Http\Requests\DummyModelUpdateRequest;
+
+class DummyModelUpdateService
+{
+    public function handle(DummyModel $dummyModel, DummyModelUpdateRequest $request): DummyModel
+    {
+        $dummyModel->update($request->all());
+
+        return $dummyModel;
+    }
+}

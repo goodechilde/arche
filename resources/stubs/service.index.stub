@@ -1,0 +1,20 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\DummyModel;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Spatie\QueryBuilder\QueryBuilder;
+
+class DummyModelIndexService
+{
+    public function handle(): LengthAwarePaginator
+    {
+        return QueryBuilder::for(DummyModel::class)
+                    ->allowedFilters([])
+                    ->allowedSorts([])
+                    ->allowedIncludes([])
+                    ->paginate()
+                    ->appends(request()->query());
+    }
+}

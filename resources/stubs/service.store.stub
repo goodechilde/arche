@@ -1,0 +1,14 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\DummyModel;
+use App\Http\Requests\DummyModelStoreRequest;
+
+class DummyModelStoreService
+{
+    public function handle(DummyModelStoreRequest $request): DummyModel
+    {
+        return DummyModel::create($request->all());
+    }
+}
