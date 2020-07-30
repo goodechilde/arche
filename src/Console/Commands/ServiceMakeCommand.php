@@ -43,24 +43,20 @@ class ServiceMakeCommand extends GeneratorCommand
             return config('arche.stubs_dir') . '/service.update.stub';
         }
 
-        return config('arche.stubs_dir') . '/request.index.stub';
+        return config('arche.stubs_dir') . '/service.index.stub';
     }
 
     protected function buildClass($name)
     {
-//        $model = $this->option('model')
-//            ? $this->qualifyClass($this->option('model'))
-//            : 'Model';
-//
-//        return str_replace(
-//            'DummyModel', $model, parent::buildClass($name)
-//        );
+
         $replace = [];
         if ($model = $this->option('model')) {
             $model = Str::studly(class_basename($this->option('model')));
             $slug = Str::slug(str_to_words($model), '_');
             $replace['$modelSlug$'] = $slug;
+            $replace['$dummyModel'] = '$'. $slug;
             $replace['$modelTable$'] = Str::plural($slug, 2);
+            $replace['DummyModel'] = $model;
         }
 
         return str_replace(

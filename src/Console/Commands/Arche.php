@@ -187,14 +187,14 @@ class Arche extends GeneratorCommand
      *
      * @return void
      */
-    protected function createService($requestType = 'Index')
+    protected function createService($serviceType = 'Index')
     {
         $model = Str::studly(class_basename($this->argument('name')));
-        $name = "{$model}Service";
+        $name = "{$model}{$serviceType}Service";
         $this->call('arche:service', [
             'name' => $name,
             '--model' => $model,
-            '--type' => Str::slug($requestType),
+            '--type' => Str::slug($serviceType),
         ]);
     }
 
