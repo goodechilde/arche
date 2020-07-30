@@ -126,18 +126,19 @@ class Arche extends GeneratorCommand
      */
     protected function createService()
     {
-        $service = Str::studly(class_basename($this->argument('name')));
+//        $service = Str::studly(class_basename($this->argument('name')));
 
-//        $model = Str::studly(class_basename($this->argument('name')));
-//        $name = "{$model}Resource";
-//        $this->call('arche:resource', [
-//            'name' => $name,
-//        ]);
-
+        $model = Str::studly(class_basename($this->argument('name')));
+        $name = "{$model}Service";
         $this->call('arche:service', [
-            'name' => "{$service}Service",
-//            '--model' => $this->argument('name'),
+            'name' => $name,
+            '--model' => $model
         ]);
+//
+//        $this->call('arche:service', [
+//            'name' => "{$service}Service",
+//            '--model' => $this->argument('name'),
+//        ]);
     }
 
     /**
