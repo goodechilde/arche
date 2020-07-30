@@ -57,19 +57,15 @@ class ResourceMakeCommand extends GeneratorCommand
     }
 
     /**
-     * Get the destination class path.
+     * Get the default namespace for the class.
      *
-     * @param string $name
+     * @param string $rootNamespace
      *
      * @return string
      */
-    protected function getPath($name)
+    protected function getDefaultNamespace($rootNamespace)
     {
-        $name = str_replace(
-            ['\\', '/'], '', $this->argument('name')
-        );
-
-        return $this->laravel->databasePath() . "/factories/{$name}.php";
+        return $rootNamespace . '\Http\Resources';
     }
 
     /**

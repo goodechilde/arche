@@ -112,6 +112,10 @@ class ControllerMakeCommand extends GeneratorCommand
 
 
         $replace["use {$controllerNamespace}\Controller;\n"] = '';
+        $clean_model = str_replace('App\\', '', $model);
+        $slug = Str::slug(str_to_words($clean_model), '_');
+        $replace['$dummyModel'] = '$'. $slug;
+        $replace['DummyModel'] = $clean_model;
 
         return str_replace(
             array_keys($replace), array_values($replace), parent::buildClass($name)
