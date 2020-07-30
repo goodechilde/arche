@@ -75,7 +75,9 @@ class Arche extends GeneratorCommand
         }
         $this->createController();
         $this->createResource();
-//        $this->createService();
+        $this->createService('Index');
+        $this->createService('Store');
+        $this->createService('Update');
 
         $this->type = 'Request';
 
@@ -119,27 +121,6 @@ class Arche extends GeneratorCommand
         ]);
     }
 
-    /**
-     * Create a set of services for the model.
-     *
-     * @return void
-     */
-    protected function createService()
-    {
-//        $service = Str::studly(class_basename($this->argument('name')));
-
-        $model = Str::studly(class_basename($this->argument('name')));
-        $name = "{$model}Service";
-        $this->call('arche:service', [
-            'name' => $name,
-            '--model' => $model
-        ]);
-//
-//        $this->call('arche:service', [
-//            'name' => "{$service}Service",
-//            '--model' => $this->argument('name'),
-//        ]);
-    }
 
     /**
      * Create a migration file for the model.
@@ -198,6 +179,22 @@ class Arche extends GeneratorCommand
         $name = "{$model}Resource";
         $this->call('arche:resource', [
             'name' => $name,
+        ]);
+    }
+
+    /**
+     * Create a set of services for the model.
+     *
+     * @return void
+     */
+    protected function createService($requestType = 'Index')
+    {
+        $model = Str::studly(class_basename($this->argument('name')));
+        $name = "{$model}Service";
+        $this->call('arche:service', [
+            'name' => $name,
+            '--model' => $model,
+            '--type' => Str::slug($requestType),
         ]);
     }
 
