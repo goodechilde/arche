@@ -48,17 +48,24 @@ class ServiceMakeCommand extends GeneratorCommand
 
     protected function buildClass($name)
     {
-        $replace = [];
-        if ($model = $this->option('model')) {
-            $model = Str::studly(class_basename($this->option('model')));
-            $slug = Str::slug(str_to_words($model), '_');
-            $replace['$modelSlug$'] = $slug;
-            $replace['$modelTable$'] = Str::plural($slug, 2);
-        }
+        $model = $this->option('model')
+            ? $this->qualifyClass($this->option('model'))
+            : 'Model';
 
         return str_replace(
-            array_keys($replace), array_values($replace), parent::buildClass($name)
+            'DummyModel', $model, parent::buildClass($name)
         );
+//        $replace = [];
+//        if ($model = $this->option('model')) {
+//            $model = Str::studly(class_basename($this->option('model')));
+//            $slug = Str::slug(str_to_words($model), '_');
+//            $replace['$modelSlug$'] = $slug;
+//            $replace['$modelTable$'] = Str::plural($slug, 2);
+//        }
+//
+//        return str_replace(
+//            array_keys($replace), array_values($replace), parent::buildClass($name)
+//        );
     }
 
     /**
