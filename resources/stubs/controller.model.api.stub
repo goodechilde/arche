@@ -22,22 +22,34 @@ use Illuminate\Http\Response;
 class DummyClass extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Sets authorization for all resources on this class
+     * uncomment authorizationResource to enable the Policy
+     *
+     */
+    public function __construct()
+    {
+//        $this->authorizeResource(DummyModel::class);
+    }
+
+    /**
+     * Display a listing of the dummyModel resource.
+     * @queryParam sort Field to sort by. Defaults to 'id'.
+     * @queryParam fields[dummyModel] Comma-separated fields to include in the response
+     * @queryParam filters[INSERTFILTER] Filter by INSERTFILTER.
+     * @queryParam include Include related information, accepted values .
      *
      * @param DummyModelIndexService $service
      * @return AnonymousResourceCollection
      */
     public function index(DummyModelIndexService $service): AnonymousResourceCollection
     {
-        $this->authorize('viewAny', DummyModel::class);
-
         $dummyModel = $service->handle();
         return DummyModelResource::collection($dummyModel);
     }
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created dummyModel resource in storage.
      *
      * @param DummyModelStoreRequest $request
      * @param DummyModelStoreService $service
@@ -48,8 +60,6 @@ class DummyClass extends Controller
             DummyModelStoreService $service
         ): DummyModelResource
     {
-        $this->authorize('create', DummyModel::class);
-
         $dummyModel = $service->handle($request);
         return new DummyModelResource(
             $dummyModel
@@ -57,22 +67,20 @@ class DummyClass extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified dummyModel resource.
      *
      * @param DummyModel $dummyModel
      * @return DummyModelResource
      */
     public function show(DummyModel $dummyModel): DummyModelResource
     {
-        $this->authorize('view', $dummyModel);
-
         return new DummyModelResource(
             $dummyModel
         );
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified dummyModel resource in storage.
      *
      * @param DummyModelUpdateRequest $request
      * @param DummyModelUpdateService $service
@@ -85,8 +93,6 @@ class DummyClass extends Controller
             DummyModel $dummyModel
         ): DummyModelResource
     {
-        $this->authorize('update', $dummyModel);
-
         $dummyModel = $service->handle($dummyModel, $request);
         return new DummyModelResource(
             $dummyModel
@@ -94,7 +100,7 @@ class DummyClass extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified dummyModel resource from storage.
      *
      * @param DummyModel $dummyModel
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -102,8 +108,6 @@ class DummyClass extends Controller
      */
     public function destroy(DummyModel $dummyModel): Response
     {
-        $this->authorize('delete', $dummyModel);
-
         $dummyModel->delete();
         return noContent();
     }
