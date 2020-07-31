@@ -2,7 +2,10 @@
 
 namespace DummyNamespace;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\Response;
 
 class DummyClass extends FormRequest
 {
@@ -34,4 +37,14 @@ class DummyClass extends FormRequest
             'id' => 'required|unique:$modelTable$,id,' . $id,
         ];
     }
+
+    protected function failedValidation(Validator $validator): void
+    {
+        throw new HttpResponseException(
+            \response()->json([
+                'messages' => $validator->errors()->all(),
+            ], Response::HTTP_UNPROCESSABLE_ENTITY),
+        );
+    }
+
 }
