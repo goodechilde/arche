@@ -14,11 +14,11 @@ class DummyClass extends Seeder
     {
         factory(DummyModel::class, 25)->create();
 
-        Permission::create(['name' => 'view DummyModel']);
-        Permission::create(['name' => 'viewAny DummyModel']);
-        Permission::create(['name' => 'create DummyModel']);
-        Permission::create(['name' => 'update DummyModel']);
-        Permission::create(['name' => 'delete DummyModel']);
+        Permission::create(['name' => 'view DummyPlural']);
+        Permission::create(['name' => 'viewAny DummyPlural']);
+        Permission::create(['name' => 'create DummyPlural']);
+        Permission::create(['name' => 'update DummyPlural']);
+        Permission::create(['name' => 'delete DummyPlural']);
 
 
     }

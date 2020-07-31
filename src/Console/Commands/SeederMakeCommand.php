@@ -4,6 +4,7 @@ namespace Goodechilde\Arche\Console\Commands;
 
 use Goodechilde\Arche\Console\Contracts\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
+use Illuminate\Support\Str;
 
 class SeederMakeCommand extends GeneratorCommand
 {
@@ -51,7 +52,7 @@ class SeederMakeCommand extends GeneratorCommand
             ? $this->qualifyClass($this->option('model'))
             : 'Model';
             $replace['DummyModel'] = $model;
-            $replace['DummyPlural'] = Str::plural($model);
+            $replace['DummyPlural'] = Str::plural(Str::slug(studly_to_words($model), '_'));
 
 
         return str_replace(
