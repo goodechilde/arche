@@ -29,6 +29,8 @@ class DummyClass extends Controller
      */
     public function index(DummyModelIndexService $service): AnonymousResourceCollection
     {
+        $this->authorize('viewAny', DummyModel::class);
+
         $dummyModel = $service->handle();
         return DummyModelResource::collection($dummyModel);
     }
@@ -46,6 +48,8 @@ class DummyClass extends Controller
             DummyModelStoreService $service
         ): DummyModelResource
     {
+        $this->authorize('create', DummyModel::class);
+
         $dummyModel = $service->handle($request);
         return new DummyModelResource(
             $dummyModel
@@ -60,6 +64,8 @@ class DummyClass extends Controller
      */
     public function show(DummyModel $dummyModel): DummyModelResource
     {
+        $this->authorize('view', $dummyModel);
+
         return new DummyModelResource(
             $dummyModel
         );
@@ -79,6 +85,8 @@ class DummyClass extends Controller
             DummyModel $dummyModel
         ): DummyModelResource
     {
+        $this->authorize('update', $dummyModel);
+
         $dummyModel = $service->handle($dummyModel, $request);
         return new DummyModelResource(
             $dummyModel
@@ -94,6 +102,8 @@ class DummyClass extends Controller
      */
     public function destroy(DummyModel $dummyModel): Response
     {
+        $this->authorize('delete', $dummyModel);
+
         $dummyModel->delete();
         return noContent();
     }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 
 class DummyClass extends Seeder
 {
@@ -12,5 +13,13 @@ class DummyClass extends Seeder
     public function run()
     {
         factory(DummyModel::class, 25)->create();
+
+        Permission::create(['name' => 'view DummyModel']);
+        Permission::create(['name' => 'viewAny DummyModel']);
+        Permission::create(['name' => 'create DummyModel']);
+        Permission::create(['name' => 'update DummyModel']);
+        Permission::create(['name' => 'delete DummyModel']);
+
+
     }
 }

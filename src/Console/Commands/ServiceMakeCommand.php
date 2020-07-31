@@ -57,6 +57,7 @@ class ServiceMakeCommand extends GeneratorCommand
             $replace['$dummyModel'] = '$'. $slug;
             $replace['$modelTable$'] = Str::plural($slug, 2);
             $replace['DummyModel'] = $model;
+            $replace['DummyPlural'] = Str::plural($model);
         }
 
         return str_replace(

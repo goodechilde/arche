@@ -50,10 +50,14 @@ class SeederMakeCommand extends GeneratorCommand
         $model = $this->option('model')
             ? $this->qualifyClass($this->option('model'))
             : 'Model';
+            $replace['DummyModel'] = $model;
+            $replace['DummyPlural'] = Str::plural($model);
+
 
         return str_replace(
-            'DummyModel', $model, parent::buildClass($name)
+            array_keys($replace), array_values($replace), parent::buildClass($name)
         );
+
     }
 
     /**
