@@ -18,7 +18,7 @@ class DummyClass
      */
     public function viewAny(DummyUser $user)
     {
-       $permission = 'list DummyModelPlural';
+        $permission = sprintf("%s DummyModelPlural", __FUNCTION__);
 
         return has_permission($user, $permission) || $user->can('user::view:all');
     }
