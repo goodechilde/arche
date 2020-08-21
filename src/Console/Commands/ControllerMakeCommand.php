@@ -199,6 +199,7 @@ class ControllerMakeCommand extends GeneratorCommand
             'DummyFullModelClass' => $modelClass,
             'DummyModelClass' => class_basename($modelClass),
             'DummyModelVariable' => lcfirst(class_basename($modelClass)),
+            'dummyModel' => Str::plural(lcfirst(class_basename($modelClass)), 2),
             '$modelSlug$' => $modelSlug,
             '$label$' => $label,
             '$rows$' => Str::plural(lcfirst(class_basename($modelClass)), 2),
