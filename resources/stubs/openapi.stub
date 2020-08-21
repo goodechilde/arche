@@ -1,0 +1,348 @@
+openapi: 3.0.3
+info:
+  title: DummyModel
+  description: The DummyModel Module API
+  version: 1.0.0
+servers:
+  - url: '/api'
+paths:
+  /dummyPlural:
+    get:
+      summary: DummyModel index
+      description: Returns a list of dummyPlural
+      operationId: dummyModelIndex
+      security:
+        - basic_auth: []
+      tags:
+        - 'DummyModel'
+      parameters:
+        - $ref: '#/components/parameters/DummyModelSort'
+        - $ref: '#/components/parameters/DummyModelFilters'
+        - $ref: '#/components/parameters/DummyModelPage'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                description: DummyModel response object
+                required:
+                  - data
+                  - links
+                  - meta
+                properties:
+                  data:
+                    type: array
+                    description: A collection of dummyPlural
+                    items:
+                      $ref: '#/components/schemas/DummyModel'
+                  links:
+                    $ref: '#/components/schemas/DummyModelLinks'
+                  meta:
+                    $ref: '#/components/schemas/DummyModelMeta'
+        '400':
+          description: Bad Request
+    post:
+      summary: DummyModel store
+      description: Stores a dummyModel
+      operationId: dummyModelStore
+      security:
+        - basic_auth: []
+      tags:
+        - 'DummyModel'
+      requestBody:
+        $ref: '#/components/requestBodies/DummyModelRequest'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DummyModel'
+        '422':
+          $ref: '#/components/responses/UnprocessableResponse'
+  /dummyPlural/{dummyModelId}:
+    get:
+      summary: DummyModel show
+      description: Returns a single dummyModel
+      operationId: dummyModelShow
+      security:
+        - basic_auth: []
+      tags:
+        - 'DummyModel'
+      parameters:
+        - name: dummyModelId
+          in: path
+          description: DummyModel identifer for the url
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DummyModel'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+        '400':
+          $ref: '#/components/responses/BadRequestResponse'
+    put:
+      summary: DummyModel update
+      description: Update a dummyModel
+      operationId: dummyModelUpdate
+      security:
+        - basic_auth: []
+      tags:
+        - 'DummyModel'
+      parameters:
+        - name: dummyModelId
+          in: path
+          description: DummyModel identifer for the url
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        $ref: '#/components/requestBodies/DummyModelRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/DummyModel'
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+    delete:
+      summary: DummyModel delete
+      description: Delete a single dummyModel
+      operationId: dummyModelDestroy
+      security:
+        - basic_auth: []
+      tags:
+        - 'DummyModel'
+      parameters:
+        - name: dummyModelId
+          in: path
+          description: DummyModel identifer for the url
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No Content
+        '404':
+          $ref: '#/components/responses/NotFoundResponse'
+components:
+  schemas:
+    DummyModel:
+      type: object
+      allOf:
+        - type: object
+          properties:
+            id:
+              $ref: '#/components/schemas/DummyModelId'
+        - $ref: '#/components/schemas/DummyModelFillableFields'
+        - $ref: '#/components/schemas/DummyModelExternalId'
+        - $ref: '#/components/schemas/DummyModelAuditData'
+    DummyModelId:
+      description: The unique dummyModel identifier
+      type: integer
+      format: int64
+      example: 234
+    DummyModelFillableFields:
+      type: object
+      description: A DummyModels fillable fields
+      required:
+        - fieldName
+      properties:
+        fieldName:
+          description: First Name
+          type: string
+          example: TEXT
+          default: null
+          nullable: false
+    DummyModelAuditData:
+      description: Meta data about a dummyModel
+      type: object
+      properties:
+        createdAt:
+          type: string
+          format: 'date-time'
+          description: When the record was created
+          example: 2019-12-19T16:39:57-08:00
+        updatedAt:
+          type: string
+          format: 'date-time'
+          description: When the record was last updated
+          example: 2019-12-20T17:38:59-08:00
+        createdBy:
+          type: integer
+          format: int64
+          description: Who created this record
+          example: 83
+        updatedBy:
+          type: integer
+          format: int64
+          description: Who updated this record last
+          example: 83
+    DummyModelExternalId:
+      type: object
+      description: An UUID reference for the dummyModel
+      properties:
+        externalId:
+          description: Reference ID for external reference. UUIDv4
+          type: string
+          format: uuid
+          example: 2e40bcdb-54ab-4c66-af29-d46b3b5f553a
+    DummyModelLinks:
+      type: object
+      description: Response links on index requests
+      properties:
+        first:
+          type: string
+          description: The first page of data
+          example: http://core.test/api/dummyPlural?page=1
+        last:
+          type: string
+          description: The last page of data
+          example: http://core.test/api/dummyPlural?page=6
+          nullable: true
+        prev:
+          type: string
+          description: The previous page of data, null it there isn't one
+          example: http://core.test/api/dummyPlural?page=2
+          nullable: true
+        next:
+          type: string
+          description: The next page of data, null if there isn't one
+          example: http://core.test/api/dummyPlural?page=4
+          nullable: true
+    DummyModelMeta:
+      type: object
+      description: Meta information about the paged data
+      properties:
+        current_page:
+          type: integer
+          description: The current page in the data set
+          example: 3
+        from:
+          type: integer
+          description: First item in this page of data
+          example: 31
+          nullable: true
+        last_page:
+          type: integer
+          description: The last page in the data set
+          example: 6
+        path:
+          type: string
+          description: The base path of the API
+          example: http://core.test/api/dummyPlural
+        per_page:
+          type: integer
+          description: Number of results per page
+          example: 15
+        to:
+          type: integer
+          description: Last item in this page of data
+          example: 45
+          nullable: true
+        total:
+          type: integer
+          description: Total number of results available for all results
+          example: 80
+  parameters:
+    DummyModelFilters:
+      in: query
+      name: filter
+      description: Filters to apply to the dummyModel
+      schema:
+        type: object
+        enum:
+          - field_name
+          - trashed
+        properties:
+          field_name:
+            type: string
+            description: The dummyModels field name
+            example: 'TEXT'
+          trashed:
+            enum:
+              - with
+              - only
+            type: string
+            description: Include soft deleted items. 'only' to show only deleted, 'with' to include with all results.
+            example: only
+      style: deepObject
+      explode: true
+    DummyModelSort:
+      in: query
+      name: sort
+      description: Sort by ASC or DESC. You can use - if you want to have the default order sorted descendingly
+      schema:
+        type: array
+        items:
+          enum:
+            - field_name
+          type: string
+      style: form
+      explode: false
+    DummyModelPage:
+      in: query
+      name: page
+      description: Page number of data set
+      schema:
+        type: integer
+        example: 1
+  requestBodies:
+    DummyModelRequest:
+      content:
+        'application/json':
+          schema:
+            $ref: '#/components/schemas/DummyModelFillableFields'
+  responses:
+    UnprocessableResponse:
+      description: Unprocessable entity
+      content:
+        'application/json':
+          schema:
+            type: object
+            properties:
+              messages:
+                type: array
+                description: An array of possible error messages.
+                items:
+                  type: string
+                  description: The error message
+                  example: 'The field is required'
+    NotFoundResponse:
+      description: Not Found
+      content:
+        'application/json':
+          schema:
+            type: string
+            description: Not found message
+            example: 'No entity found for entity 10'
+    NoContentResponse:
+      description: No Content
+    BadRequestResponse:
+      description: Bad Request
+  securitySchemes:
+    basic_auth:
+      type: http
+      scheme: basic
+tags:
+  - name: 'DummyModel'
+    description: 'DummyModel operations'

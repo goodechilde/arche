@@ -2,6 +2,7 @@
 
 namespace Goodechilde\Arche\Console;
 
+use Goodechilde\Arche\Console\Commands\OpenapiMakeCommand;
 use Goodechilde\Arche\Console\Commands\ResourceMakeCommand;
 use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
 use Goodechilde\Arche\Console\Commands\ServiceMakeCommand;
@@ -33,6 +34,7 @@ class Kernel extends ConsoleKernel
         PolicyMakeCommand::class,
         ResourceMakeCommand::class,
         ServiceMakeCommand::class,
+        OpenapiMakeCommand::class,
     ];
 
     /**

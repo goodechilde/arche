@@ -84,6 +84,7 @@ class Arche extends GeneratorCommand
         $this->createRequest('Store');
 
         $this->createRequest('Update');
+        $this->createOpenapi('Openapi');
         if (!$this->option('no-policy')) {
             $this->createPolicy();
         }
@@ -213,6 +214,22 @@ class Arche extends GeneratorCommand
             'name' => $name,
             '--model' => $model,
             '--type' => Str::slug($requestType),
+        ]);
+    }
+    /**
+     * Create a controller for the model.
+     *
+     * @param string $requestType
+     *
+     * @return void
+     */
+    protected function createOpenapi()
+    {
+        $model = Str::studly(class_basename($this->argument('name')));
+        $name = "{$model}";
+        $this->call('arche:openapi', [
+            'name' => $name,
+            '--model' => $model,
         ]);
     }
 
