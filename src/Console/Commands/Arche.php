@@ -231,6 +231,9 @@ class Arche extends GeneratorCommand
             'name' => $name,
             '--model' => $model,
         ]);
+        rename(base_path() . '/app/OpenAPI/' . $name . '.php', base_path() . '/app/OpenAPI/' . $name . '.yml');
+
+
     }
 
 
