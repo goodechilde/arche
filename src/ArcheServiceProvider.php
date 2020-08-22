@@ -8,6 +8,7 @@ use Goodechilde\Arche\Console\Commands\OpenapiParameterMakeCommand;
 use Goodechilde\Arche\Console\Commands\OpenapiSchemaMakeCommand;
 use Goodechilde\Arche\Console\Commands\ResourceMakeCommand;
 use Goodechilde\Arche\Console\Commands\ApiBuildMakeCommand;
+use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
 use Goodechilde\Arche\Console\Commands\ServiceMakeCommand;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Support\ServiceProvider;
@@ -33,6 +34,7 @@ class ArcheServiceProvider extends ServiceProvider
         PolicyMakeCommand::class,
         ResourceMakeCommand::class,
         ServiceMakeCommand::class,
+        SeederMakeCommand::class,
         OpenapiMakeCommand::class,
         OpenapiComponentMakeCommand::class,
         OpenapiParameterMakeCommand::class,
