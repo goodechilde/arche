@@ -256,8 +256,8 @@ class Arche extends GeneratorCommand
         if (!file_exists(base_path() . '/openapi.yaml')) {
             rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/openapi.yaml');
         }
-        if (!file_exists($openapipath . '/responses/GeneralResponses.yaml')) {
-            rename(base_path() . '/resources/stubs/openapi.generalresponses.stub', $openapipath . '/responses/GeneralResponses.yaml');
+        if (!file_exists($openapipath . 'responses/GeneralResponses.yaml')) {
+            rename(base_path() . '/resources/stubs/openapi.generalresponses.stub', $openapipath . 'responses/GeneralResponses.yaml');
         }
 
 
