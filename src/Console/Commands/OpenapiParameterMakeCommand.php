@@ -79,7 +79,7 @@ class OpenapiParameterMakeCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\OpenAPI';
+        return $rootNamespace . '\OpenAPI\parameters';
     }
 
     /**

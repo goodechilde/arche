@@ -253,9 +253,17 @@ class Arche extends GeneratorCommand
                 $ref: \'./app/OpenApi/'. $name .'.yml#/'. $name .'\'';
 
         rename($openapipath . $name . '.php', $openapipath . $name . '.yaml');
+        rename($openapipath . 'components/' . $name . '.php', $openapipath . 'components/' . $name . 'Component.yaml');
+        rename($openapipath . 'schemas/' . $name . '.php', $openapipath . 'schemas/' . $name . 'Schema.yaml');
+        rename($openapipath . 'parameters/' . $name . '.php', $openapipath . 'parameters/' . $name . 'Parameters.yaml');
         if (!file_exists(base_path() . '/openapi.yaml')) {
-            rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/openapi.yaml');
+            rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/staging.yaml');
         }
+
+        $file_replace = file_get_contents(base_path() . '/staging.yml');
+        $replace_content = preg_replace('/paths:/', $append_text, $file_replace);
+        file_put_contents(base_path() . '/staging.yml', $replace_content);
+
         if (!file_exists($openapipath . 'responses/GeneralResponses.yaml')) {
             if (!mkdir($concurrentDirectory = $openapipath . 'responses') && !is_dir($concurrentDirectory)) {
                 throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
