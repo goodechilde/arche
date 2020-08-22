@@ -2,6 +2,7 @@
 
 namespace Goodechilde\Arche;
 
+use Goodechilde\Arche\Console\Commands\OpenapiMakeCommand;
 use Goodechilde\Arche\Console\Commands\ResourceMakeCommand;
 use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
 use Goodechilde\Arche\Console\Commands\ServiceMakeCommand;
@@ -29,6 +30,7 @@ class ArcheServiceProvider extends ServiceProvider
         PolicyMakeCommand::class,
         ResourceMakeCommand::class,
         ServiceMakeCommand::class,
+        OpenapiMakeCommand::class,
     ];
 
     /**
