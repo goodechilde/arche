@@ -2,11 +2,11 @@
 
 namespace Goodechilde\Arche\Console\Commands;
 
-use Goodechilde\Arche\Console\Contracts\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 use Illuminate\Support\Str;
+use Illuminate\Console\Command;
 
-class ApiBuildMakeCommand extends GeneratorCommand
+class ApiBuildMakeCommand extends Command
 {
     /**
      * The console command name.
@@ -24,8 +24,6 @@ class ApiBuildMakeCommand extends GeneratorCommand
 
     /**
      * Build the class with the given name.
-     *
-     * @param string $name
      *
      * @return string
      */
