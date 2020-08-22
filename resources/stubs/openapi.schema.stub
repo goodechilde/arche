@@ -1,0 +1,117 @@
+DummyModel:
+  type: object
+  allOf:
+    - type: object
+      properties:
+        id:
+          $ref: '../schemas/DummyModelSchema.yaml#/DummyModelId'
+    - $ref: '../schemas/DummyModelSchema.yaml#/DummyModelFillableFields'
+    - $ref: '../schemas/DummyModelSchema.yaml#/DummyModelExternalId'
+    - $ref: '../schemas/DummyModelSchema.yaml#/DummyModelAuditData'
+DummyModelId:
+  description: The unique person identifier
+  type: integer
+  format: int64
+  example: 234
+DummyModelFillableFields:
+  type: object
+  description: A DummyModels fillable fields
+  required:
+    - fieldName
+  properties:
+    fieldName:
+      description: First Name
+      type: string
+      example: TEXT
+      default: null
+      nullable: false
+DummyModelAuditData:
+  description: Meta data about a person
+  type: object
+  properties:
+    createdAt:
+      type: string
+      format: 'date-time'
+      description: When the record was created
+      example: 2019-12-19T16:39:57-08:00
+    updatedAt:
+      type: string
+      format: 'date-time'
+      description: When the record was last updated
+      example: 2019-12-20T17:38:59-08:00
+    createdBy:
+      type: integer
+      format: int64
+      description: Who created this record
+      example: 83
+    updatedBy:
+      type: integer
+      format: int64
+      description: Who updated this record last
+      example: 83
+DummyModelExternalId:
+  type: object
+  description: An UUID reference for the person
+  properties:
+    externalId:
+      description: Reference ID for external reference. UUIDv4
+      type: string
+      format: uuid
+      example: 2e40bcdb-54ab-4c66-af29-d46b3b5f553a
+DummyModelLinks:
+  type: object
+  description: Response links on index requests
+  properties:
+    first:
+      type: string
+      description: The first page of data
+      example: http://127.0.0.1/api/dummyPlural?page=1
+    last:
+      type: string
+      description: The last page of data
+      example: http://127.0.0.1/api/dummyPlural?page=6
+      nullable: true
+    prev:
+      type: string
+      description: The previous page of data, null it there isn't one
+      example: http://127.0.0.1/api/dummyPlural?page=2
+      nullable: true
+    next:
+      type: string
+      description: The next page of data, null if there isn't one
+      example: http://127.0.0.1/api/dummyPlural?page=4
+      nullable: true
+DummyModelMeta:
+  type: object
+  description: Meta information about the paged data
+  properties:
+    current_page:
+      type: integer
+      description: The current page in the data set
+      example: 3
+    from:
+      type: integer
+      description: First item in this page of data
+      example: 31
+      nullable: true
+    last_page:
+      type: integer
+      description: The last page in the data set
+      example: 6
+    path:
+      type: string
+      description: The base path of the API
+      example: http://127.0.0.1/api/dummyPlural
+    per_page:
+      type: integer
+      description: Number of results per page
+      example: 15
+    to:
+      type: integer
+      description: Last item in this page of data
+      example: 45
+      nullable: true
+    total:
+      type: integer
+      description: Total number of results available for all results
+      example: 80

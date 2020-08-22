@@ -1,0 +1,42 @@
+DummyModelFilters:
+  in: query
+  name: filter
+  description: Filters to apply to the person
+  schema:
+    type: object
+    enum:
+      - field_name
+      - trashed
+    properties:
+      field_name:
+        type: string
+        description: The variable field name
+        example: 'TEXT'
+      trashed:
+        enum:
+          - with
+          - only
+        type: string
+        description: Include soft deleted items. 'only' to show only deleted, 'with' to include with all results.
+        example: only
+  style: deepObject
+  explode: true
+DummyModelSort:
+  in: query
+  name: sort
+  description: Sort by ASC or DESC. You can use - if you want to have the default order sorted descending
+  schema:
+    type: array
+    items:
+      enum:
+        - field_name
+      type: string
+  style: form
+  explode: false
+DummyModelPage:
+  in: query
+  name: page
+  description: Page number of data set
+  schema:
+    type: integer
+    example: 1

@@ -1,0 +1,16 @@
+schemas:
+  $refs: '../schemas/DummyModelSchema.yaml'
+parameters:
+  $refs: '../parameters/DummyModelParameters.yaml'
+requestBodies:
+  DummyModelRequest:
+    content:
+      'application/json':
+        schema:
+          $ref: '../schemas/DummyModelSchema.yaml#/DummyModelFillableFields'
+responses:
+  $refs: './responses/GeneralResponses.yaml'
+securitySchemes:
+  basic_auth:
+    type: http
+    scheme: basic

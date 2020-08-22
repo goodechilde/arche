@@ -225,16 +225,41 @@ class Arche extends GeneratorCommand
      */
     protected function createOpenapi()
     {
+        $openapipath = base_path() . '/app/OpenAPI/';
         $model = Str::studly(class_basename($this->argument('name')));
         $name = "{$model}";
         $this->call('arche:openapi', [
             'name' => $name,
             '--model' => $model,
         ]);
-        rename(base_path() . '/app/OpenAPI/' . $name . '.php', base_path() . '/app/OpenAPI/' . $name . '.yml');
+        $this->call('arche:openapi:schema', [
+            'name' => $name,
+            '--model' => $model,
+        ]);
+        $this->call('arche:openapi:component', [
+            'name' => $name,
+            '--model' => $model,
+        ]);
+        $this->call('arche:openapi:parameter', [
+            'name' => $name,
+            '--model' => $model,
+        ]);
+
+        $append_text = '
+        paths:
+            /'. Str::plural(lcfirst($name), 2) . ':
+                 $ref: \'./app/OpenApi/'. $name .'yml#/'. Str::plural($name) . '\'
+            /'. Str::plural(lcfirst($name), 2) . '/{'. $name .'Id}:
+                $ref: \'./app/OpenApi/'. $name .'.yml#/'. $name .'\'';
+
+        rename($openapipath . $name . '.php', $openapipath . '/app/OpenAPI/' . $name . '.yaml');
         if (!file_exists(base_path() . '/openapi.yaml')) {
             rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/openapi.yaml');
         }
+        if (!file_exists($openapipath . '/responses/GeneralResponses.yaml')) {
+            rename(base_path() . '/resources/stubs/openapi.generalresponses.stub', $openapipath . '/responses/GeneralResponses.yaml');
+        }
+
 
 
     }

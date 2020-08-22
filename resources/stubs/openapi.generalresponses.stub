@@ -1,0 +1,26 @@
+UnprocessableResponse:
+  description: Unprocessable entity
+  content:
+    'application/json':
+      schema:
+        type: object
+        properties:
+          messages:
+            type: array
+            description: An array of possible error messages.
+            items:
+              type: string
+              description: The error message
+              example: 'The field is required'
+NotFoundResponse:
+  description: Not Found
+  content:
+    'application/json':
+      schema:
+        type: string
+        description: Not found message
+        example: 'No entity found for entity 10'
+NoContentResponse:
+  description: No Content
+BadRequestResponse:
+  description: Bad Request
