@@ -252,7 +252,7 @@ class Arche extends GeneratorCommand
             /'. Str::plural(lcfirst($name), 2) . '/{'. $name .'Id}:
                 $ref: \'./app/OpenApi/'. $name .'.yml#/'. $name .'\'';
 
-        rename($openapipath . $name . '.php', $openapipath . '/app/OpenAPI/' . $name . '.yaml');
+        rename($openapipath . $name . '.php', $openapipath . $name . '.yaml');
         if (!file_exists(base_path() . '/openapi.yaml')) {
             rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/openapi.yaml');
         }
