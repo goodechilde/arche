@@ -257,6 +257,9 @@ class Arche extends GeneratorCommand
             rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/openapi.yaml');
         }
         if (!file_exists($openapipath . 'responses/GeneralResponses.yaml')) {
+            if (!mkdir($concurrentDirectory = $openapipath . 'responses') && !is_dir($concurrentDirectory)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+            }
             rename(base_path() . '/resources/stubs/openapi.generalresponses.stub', $openapipath . 'responses/GeneralResponses.yaml');
         }
 
