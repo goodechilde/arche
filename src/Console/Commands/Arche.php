@@ -245,24 +245,24 @@ class Arche extends GeneratorCommand
             '--model' => $model,
         ]);
 
-        $append_text = '
-        paths:
-            /'. Str::plural(lcfirst($name), 2) . ':
-                 $ref: \'./app/OpenApi/'. $name .'yml#/'. Str::plural($name) . '\'
-            /'. Str::plural(lcfirst($name), 2) . '/{'. $name .'Id}:
-                $ref: \'./app/OpenApi/'. $name .'.yml#/'. $name .'\'';
+        $append_text = 'paths:
+  /'. Str::plural(lcfirst($name), 2) . ':
+    $ref: \'./app/OpenAPI/'. $name .'.yaml#/'. Str::plural($name) . '\'
+  /'. Str::plural(lcfirst($name), 2) . '/{'. $name .'Id}:
+    $ref: \'./app/OpenAPI/'. $name .'.yaml#/'. $name .'\'';
 
         rename($openapipath . $name . '.php', $openapipath . $name . '.yaml');
         rename($openapipath . 'components/' . $name . '.php', $openapipath . 'components/' . $name . 'Component.yaml');
         rename($openapipath . 'schemas/' . $name . '.php', $openapipath . 'schemas/' . $name . 'Schema.yaml');
         rename($openapipath . 'parameters/' . $name . '.php', $openapipath . 'parameters/' . $name . 'Parameters.yaml');
-        if (!file_exists(base_path() . '/openapi.yaml')) {
-            rename(base_path() . '/resources/stubs/openapi.base.stub', base_path() . '/staging.yaml');
+        $staging_file = base_path() . '/staging.yaml';
+        if (!file_exists($staging_file)) {
+            copy(base_path() . '/resources/stubs/openapi.base.stub', $staging_file);
         }
 
-        $file_replace = file_get_contents(base_path() . '/staging.yml');
+        $file_replace = file_get_contents($staging_file);
         $replace_content = preg_replace('/paths:/', $append_text, $file_replace);
-        file_put_contents(base_path() . '/staging.yml', $replace_content);
+        file_put_contents($staging_file, $replace_content);
 
         if (!file_exists($openapipath . 'responses/GeneralResponses.yaml')) {
             if (!mkdir($concurrentDirectory = $openapipath . 'responses') && !is_dir($concurrentDirectory)) {

@@ -7,7 +7,7 @@ use Goodechilde\Arche\Console\Commands\OpenapiMakeCommand;
 use Goodechilde\Arche\Console\Commands\OpenapiParameterMakeCommand;
 use Goodechilde\Arche\Console\Commands\OpenapiSchemaMakeCommand;
 use Goodechilde\Arche\Console\Commands\ResourceMakeCommand;
-use Goodechilde\Arche\Console\Commands\SeederMakeCommand;
+use Goodechilde\Arche\Console\Commands\ApiBuildMakeCommand;
 use Goodechilde\Arche\Console\Commands\ServiceMakeCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -33,7 +33,7 @@ class Kernel extends ConsoleKernel
         MigrateMakeCommand::class,
         ModelMakeCommand::class,
         RequestMakeCommand::class,
-        SeederMakeCommand::class,
+        ApiBuildMakeCommand::class,
         PolicyMakeCommand::class,
         ResourceMakeCommand::class,
         ServiceMakeCommand::class,
@@ -41,6 +41,7 @@ class Kernel extends ConsoleKernel
         OpenapiComponentMakeCommand::class,
         OpenapiParameterMakeCommand::class,
         OpenapiSchemaMakeCommand::class,
+        ApiBuildMakeCommand::class,
     ];
 
     /**
