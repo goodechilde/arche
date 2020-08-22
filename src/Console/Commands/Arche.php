@@ -248,7 +248,7 @@ class Arche extends GeneratorCommand
         $append_text = 'paths:
   /'. Str::plural(lcfirst($name), 2) . ':
     $ref: \'./app/OpenAPI/'. $name .'.yaml#/'. Str::plural($name) . '\'
-  /'. Str::plural(lcfirst($name), 2) . '/{'. $name .'Id}:
+  /'. Str::plural(lcfirst($name), 2) . '/{'. lcfirst($name) .'Id}:
     $ref: \'./app/OpenAPI/'. $name .'.yaml#/'. $name .'\'';
 
         rename($openapipath . $name . '.php', $openapipath . $name . '.yaml');
