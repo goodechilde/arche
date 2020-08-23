@@ -3,10 +3,12 @@ DummyModelFilters:
   name: filter
   description: Filters to apply to the person
   schema:
-    type: object
-    enum:
-      - field_name
-      - trashed
+    type: array
+    items:
+        enum:
+        - field_name
+        - trashed
+        type: string
     properties:
       field_name:
         type: string
