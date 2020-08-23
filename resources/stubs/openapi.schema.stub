@@ -9,7 +9,7 @@ DummyModel:
     - $ref: '../schemas/DummyModelSchema.yaml#/DummyModelExternalId'
     - $ref: '../schemas/DummyModelSchema.yaml#/DummyModelAuditData'
 DummyModelId:
-  description: The unique person identifier
+  description: The unique dummyModel identifier
   type: integer
   format: int64
   example: 234
@@ -26,7 +26,7 @@ DummyModelFillableFields:
       default: null
       nullable: false
 DummyModelAuditData:
-  description: Meta data about a person
+  description: Meta data about a dummyModel
   type: object
   properties:
     createdAt:
@@ -51,7 +51,7 @@ DummyModelAuditData:
       example: 83
 DummyModelExternalId:
   type: object
-  description: An UUID reference for the person
+  description: An UUID reference for the dummyModel
   properties:
     externalId:
       description: Reference ID for external reference. UUIDv4
