@@ -30,8 +30,9 @@ class ApiBuildMakeCommand extends Command
     public function handle()
     {
         exec('swagger-cli bundle -t yaml staging.yaml > openapi.yaml');
-        
+
         exec('redoc-cli bundle -o public/docs/index.html openapi.yaml');
+        exec('cp openapi.yaml public/docs/openapi.yaml');
 
         return 'openapi.yaml file combined.';
     }
