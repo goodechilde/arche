@@ -14,6 +14,11 @@ Then publish the stubs
 php artisan vendor:publish --tag=arche
 ```
 
+And install redoc-cli
+```bash
+npm install -g redoc-cli
+```
+
 It will generate `stubs` to `resources/vendor/arche/stubs` directory.
 
 
