@@ -22,7 +22,7 @@
     "require": {
         "php": "^8.0",
         "laravel/framework": "^8.65",
-        "spatie/laravel-query-builder": "^2.8",
+        "spatie/laravel-query-builder": "^3.0",
         "spatie/laravel-permission": "^3.13"
     },
     "require-dev": {
